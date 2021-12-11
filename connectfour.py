@@ -1,5 +1,6 @@
 import numpy as np
 import pygame
+import os
 import sys
 import math
 
@@ -73,6 +74,22 @@ def winning_move(board, piece):
 			if board[r][c] == piece and board[r-1][c+1] == piece and board[r-2][c+2] == piece and board[r-3][c+3] == piece:
 				return True
 
+# def endscreen():
+# 	game_over = False
+# 	while game_over:
+# 		for event in pygame.event.get():
+# 			if event.type == pygame.QUIT:
+# 				game_over = True
+# 				sys.exit()
+# 			if keys[pygame.K_SPACE]:
+# 				game_over = True
+# 				for r in range(ROW_COUNT):
+# 					board[r][col] == 0
+# 				turn = 0
+# 		draw_board(grid)
+# 		pygame.display.update()
+
+
 
 
 game_over = False
@@ -97,13 +114,12 @@ pygame.display.update()
 myfont = pygame.font.SysFont("monospace", 75)
 
 
-
-
 while not game_over:
 
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			sys.exit()
+			
 
 		if event.type == pygame.MOUSEBUTTONDOWN:
 			pygame.draw.rect(screen, BLACK, (0,0, width, SQUARESIZE))
@@ -121,6 +137,7 @@ while not game_over:
 						label = myfont.render("Player 1 wins!!", 1, RED)
 						screen.blit(label, (40,10))
 						game_over = True
+						
 
 			else:
 				posx = event.pos[0]
@@ -141,8 +158,17 @@ while not game_over:
 			turn += 1
 			turn = turn % 2
 
+			
 			if game_over:
-				pygame.time.wait(3000)
+				pygame.time.wait(6000)
+				# keys = pygame.key.get_pressed()
+				# if keys[pygame.K_SPACE]:
+				# 	for r in range(ROW_COUNT):
+				# 		board[r][col] == 0
+				# 	turn = 0
+				# 	draw_board(grid)
+				# 	pygame.display.update()
+						
 
 
 
